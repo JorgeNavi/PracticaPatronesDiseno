@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SplashViewController" customModule="AppPatronesNombre" customModuleProvider="target">
             <connections>
+                <outlet property="spinner" destination="xoV-Vf-KIl" id="3xJ-M3-jRQ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="aNl-PI-pNF"/>
             </connections>
         </placeholder>
@@ -18,20 +19,28 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehY-Hp-EDy">
-                    <rect key="frame" x="175" y="416" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fondo4" translatesAutoresizingMaskIntoConstraints="NO" id="d0d-hq-G9r">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                </imageView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="xoV-Vf-KIl">
+                    <rect key="frame" x="186.66666666666666" y="428.66666666666669" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="d0d-hq-G9r" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1HW-Go-art"/>
+                <constraint firstItem="xoV-Vf-KIl" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Dww-Ay-K7V"/>
+                <constraint firstAttribute="bottom" secondItem="d0d-hq-G9r" secondAttribute="bottom" id="Th9-7r-f1k"/>
+                <constraint firstItem="xoV-Vf-KIl" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="kXS-Ac-1bG"/>
+                <constraint firstAttribute="trailing" secondItem="d0d-hq-G9r" secondAttribute="trailing" id="lSP-fq-dCC"/>
+                <constraint firstItem="d0d-hq-G9r" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mjf-TM-WI9"/>
+            </constraints>
             <point key="canvasLocation" x="65" y="-43"/>
         </view>
     </objects>
     <resources>
+        <image name="fondo4" width="1116" height="1941"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

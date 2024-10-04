@@ -17,12 +17,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
+        
         //Le metemos una scene a al window
         self.window = UIWindow(windowScene: scene)
+        
         //y aqui a window le metemos nuestro controlador de splash
         //el rootViewController es el orgine sobre el que se extiende toda la navegación, es decir
         //es el punto sobre el que vamos a montar un arbol de navegación
-        self.window?.rootViewController = SplashViewController()
+        self.window?.rootViewController = SplashBuilder().build() //para no tener que pasarle todo el rato los argumentos y ya que vamos a pasar siempre el mismo objeto, vamos a generar el builder en este punto (despues de haber generado el viewModel)
+        //Como la funcion .build() del (Splash)Builder retorna ya un SplashViewController con el SplashViewModel como pámetro, no hace falta más que llamar al Builder con su metodo .build() y por eso es "SplashBuilder().build()
+        
+        
         //con esto le decimos que es la pantalla que tiene que estar activa y visible
         self.window?.makeKeyAndVisible()
     }
