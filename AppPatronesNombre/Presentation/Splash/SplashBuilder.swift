@@ -8,6 +8,7 @@
 
 import UIKit
 
+//esta es la manera de inicializar el viewController
 final class SplashBuilder {
     func build() -> UIViewController {  //Establecemos una función build() que instancia un UIViewController
         let viewModel = SplashViewModel()

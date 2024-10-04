@@ -33,6 +33,7 @@ final class SplashViewController: UIViewController {
         •    Configurar la interfaz de usuario (UI): Modificar elementos como colores, textos o imágenes.
         •    Hacer conexiones iniciales: Si tienes que cargar información desde una base de datos o un servicio, es buen momento para iniciar esas llamadas (aunque no para mostrar aún el resultado en la vista).
         •    Registrar observadores o notificaciones: Puedes utilizar este método para registrar observadores de eventos o suscribirte a notificaciones que luego se eliminarán en el viewWillDisappear().
+     
      Nota importante:
      
         Aunque viewDidLoad() es un buen lugar para configuraciones iniciales, no debes hacer tareas que consuman mucho tiempo aquí, ya que eso podría hacer que la aplicación se sienta lenta o trabada al cargar la vista. Para tareas pesadas, es mejor utilizar otros hilos o esperar a momentos más apropiados en el ciclo de vida de la vista.
@@ -50,6 +51,7 @@ final class SplashViewController: UIViewController {
                 self?.setAnimation(true) //Animation true
             case .ready: //En el caso del state .ready:
                 self?.setAnimation(false) //Animation false
+                self?.present(LoginBuilder().build(), animated: true) //Llamar a otra vosta (que es lo que hace el present, es cosa de las vistas, por eso una vez programado el builder del login, se le pasa a la pantalla de spalsh (que es nuestra pantalla inicial) para que llame muestre (present) al login.
             case .error: //En caso de error:
                 break //break
             }
@@ -72,8 +74,8 @@ final class SplashViewController: UIViewController {
     }
 }
 
-/*
+
  #Preview {
  SplashBuilder().build()
  }
- */
+ 
