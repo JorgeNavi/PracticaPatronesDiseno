@@ -2,7 +2,7 @@
 
 //Un inicializador que incia
 
-//Unos setter que responden siempre la misma estancia (el propio builder
+//Unos setter que responden siempre la misma estancia (el propio builder)
 
 //Un método build() que nos devuelve la instancia
 
