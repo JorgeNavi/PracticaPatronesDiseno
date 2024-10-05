@@ -1,6 +1,6 @@
 import UIKit
 
-/// <#Description#>
+
 final class SplashViewController: UIViewController {
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
     
@@ -41,6 +41,7 @@ final class SplashViewController: UIViewController {
     //Por ello, lo primero que hacemos es llamar a su super para que lo instancie o lo arranque (creo) y cargar el viewModel
     override func viewDidLoad() {
         super.viewDidLoad()
+        bind()
         viewModel.load()
     }
     //Para enganchar la función de estados que le hemos metido al viewModel aquí mediante un binding, vamos a hacer una función en el viewModel llamada bind().

@@ -2,7 +2,7 @@
 
 import Foundation
 
-//Vamos a establecer los estados en los que se puede encontrar nuestro spinner
+//Vamos a establecer los estados en los que se puede encontrar nuestro spinner/pantalla
 enum SplashState {
     case loading
     case ready
