@@ -11,8 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="AppPatronesNombre" customModuleProvider="target">
             <connections>
                 <outlet property="errorLabel" destination="T4J-ms-083" id="uOV-N7-psU"/>
-                <outlet property="onLoginButtonTap" destination="fle-3g-W4C" id="YTd-cD-0PI"/>
                 <outlet property="passwordField" destination="ICx-cw-mPg" id="Ujh-TS-5sS"/>
+                <outlet property="sigInButton" destination="fle-3g-W4C" id="E4t-gc-Ehs"/>
                 <outlet property="spinner" destination="E9Z-N0-pbw" id="Iah-uX-zhQ"/>
                 <outlet property="usernameField" destination="VBz-TF-m2c" id="moU-uf-xl0"/>
                 <outlet property="view" destination="iN0-l3-epB" id="i2T-xi-3y0"/>
@@ -27,36 +27,36 @@
                     <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6B7-mq-aix">
-                    <rect key="frame" x="24" y="408.66666666666669" width="392" height="166.66666666666669"/>
+                    <rect key="frame" x="24" y="419" width="392" height="146.33333333333337"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="onl-Dv-dhv">
-                            <rect key="frame" x="12" y="12" width="368" height="142.66666666666666"/>
+                            <rect key="frame" x="12" y="11.999999999999993" width="368" height="122.33333333333331"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VBz-TF-m2c">
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VBz-TF-m2c">
                                     <rect key="frame" x="0.0" y="0.0" width="368" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ICx-cw-mPg">
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ICx-cw-mPg">
                                     <rect key="frame" x="0.0" y="34" width="368" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 </textField>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4J-ms-083">
-                                    <rect key="frame" x="0.0" y="68" width="368" height="20.333333333333329"/>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4J-ms-083">
+                                    <rect key="frame" x="0.0" y="68" width="368" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="E9Z-N0-pbw">
-                                    <rect key="frame" x="0.0" y="88.333333333333314" width="368" height="20"/>
+                                    <rect key="frame" x="0.0" y="68" width="368" height="20"/>
                                 </activityIndicatorView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fle-3g-W4C">
-                                    <rect key="frame" x="0.0" y="108.33333333333331" width="368" height="34.333333333333343"/>
+                                    <rect key="frame" x="0.0" y="88" width="368" height="34.333333333333343"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="filled" title="Login"/>
                                     <connections>
-                                        <action selector="onLoginButtonTapped:" destination="-1" eventType="touchUpInside" id="gYl-G9-gag"/>
+                                        <action selector="onLoginButtonTapped:" destination="-1" eventType="touchUpInside" id="lOT-v1-ybG"/>
                                     </connections>
                                 </button>
                             </subviews>
