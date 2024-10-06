@@ -25,20 +25,32 @@ protocol LoginUseCaseContract {
 
 // Ahora realizamos una implementación del protocolo con una clase
 final class LoginUseCase: LoginUseCaseContract {
+    private let dataSource: SessionDataSourceContract
+    
+    init(dataSource: SessionDataSourceContract = SessionDataSource()) {
+        self.dataSource = dataSource
+    }
+    
     func execute(credentials: Credentials, completion: @escaping (Result<Void, LoginUsecaseError>) -> Void) {
         guard validateUsername(credentials.username) else { //Guard let username se encarga de asegurar que username tenga valor, es decir que no es nil, es decir, que hay algun valor en el parametro de tipo String de sigIn. después se ha de cumplir la vaidación de usuario, que es el validateUsername(username) al que se le pasa el valor del guard. Si no se cumplen esas condiciones es cuando metemos el else, que puede ser cambiar un estado o mostrar un mensaje o lo que queramos. En este caso vamos a cambiar el estado a "error" e informar el reason. Lo mismo con el password
             return completion(.failure(LoginUsecaseError(reason: "Invalid username")))
         }
-        guard validatePassword(credentials.paswword) else {
+        guard validatePassword(credentials.password) else {
             return completion(.failure(LoginUsecaseError(reason: "Invalid password")))
         }
-        //DispatchQueue.global() etc quiere decir que en una cola global(segundo plano) tras 3 sec (desde .now() +3) ejecuta la siguiente función (Closure) que empieza en la llave {
-        DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
-            completion(.success(())) //Este success es el caso de éxito dentro del Result
-            
-        //Para continuar nos vamos a establecer un pequeño modelo de datos para las credenciales en la carpeta Models
+        LoginAPIRequest(credentials: credentials).perform { [weak self] result in
+            switch result {
+            case .success(let token):
+                self?.dataSource.storeSession(token) //Esto sirve para almacenar el token del usuario que se ha logeado
+                completion(.success(()))
+            case .failure:
+                completion(.failure(LoginUsecaseError(reason: "Network Fail")))
+            }
         }
     }
+    //Para continuar nos vamos a establecer un pequeño modelo de datos para las credenciales en la carpeta Models
+    
+    
     
     private func validateUsername(_ username: String) -> Bool {
         username.contains("@") && !username.isEmpty //Username tiene que contener @ (para que sea un correo) y no estar vacio

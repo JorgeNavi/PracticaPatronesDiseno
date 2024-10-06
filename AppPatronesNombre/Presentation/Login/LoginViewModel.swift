@@ -35,7 +35,7 @@ final class LoginViewModel {
         
         //Despues de que se ha validado el usuario y la contraseña se ejecuta el siguiente código para hacer el Login:
         onStateChanged.update(newValue: .loading) //el estado pasa a cargando y
-        let credentials = Credentials(username: username ?? "", paswword: password ?? "") //Se introducen las credenciales. El operador ?? indica que si el valor que se le introduce a username o password es nil, automaticamente se les asignará como valor una cadena vacía
+        let credentials = Credentials(username: username ?? "", password: password ?? "") //Se introducen las credenciales. El operador ?? indica que si el valor que se le introduce a username o password es nil, automaticamente se les asignará como valor una cadena vacía
         useCase.execute(credentials: credentials) { [weak self] result in //Se ejecuta el metodo del useCase con las credenciales para que las valide y después se realizan los consecutivos cambios de estado
             do {
                 try result.get()  //esta es una funcionalidad de result para captar errores. Funciona como un try except

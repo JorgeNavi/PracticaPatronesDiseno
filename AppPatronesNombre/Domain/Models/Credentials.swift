@@ -3,5 +3,5 @@
 //Ahora estas credenciales se las pasamos al caso de uso del Login como parámetro de su método
 struct Credentials {
     let username: String
-    let paswword: String
+    let password: String
 }
