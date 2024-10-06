@@ -15,8 +15,15 @@ final class LoginViewModel {
     //Volvemos a utilizar el binding como en SplashViewModel
     //Este onStateChanged lo tenemos que leer (o suscribirnos a esos cambios) en el viewDidLoad de su controller
     let onStateChanged = Binding<LoginState>()
-    //Aquí vamos a establcer las acciones que puede llevar a cabo el Login:
+    //Nos vamos a atrae aquí la funcionalidad del LoginUseCase para actualizar nuestro viewModel
+    private let useCase: LoginUseCaseContract
     
+    //Aquí le pasamos esa consante al inicializador como parámetro. Sin embargo cada vez que inicialice un LoginViewControler, me va a pedir que la pase el LoginViewModel y éste, a su vez, me va a peidir que le pase un LoginUseCase. Para solucionar esto vamos a meter nuestro UseCase en el Builder
+    init(useCase: LoginUseCaseContract) {
+        self.useCase = useCase
+    }
+    
+    //Aquí vamos a establcer las acciones que puede llevar a cabo el Login:
     //Acción/método de logearse a la que se les pasa como parámetros un username como String y una password como String
     func sigIn(_ username: String?, _ password: String?) {
         //Pasamos la accion/método al viewController en la acción del botón
@@ -24,26 +31,21 @@ final class LoginViewModel {
         // 1. Valido username valido
         // 2. Valido password valida
         // 3. Hago Login.
-        // Esto vamos a hacerlo en otras funciones mas abajo
-        guard let username, validateUsername(username) else { //Guard let username se encarga de asegurar que username tenga valor, es decir que no es nil, es decir, que hay algun valor en el parametro de tipo String de sigIn. después se ha de cumplir la vaidación de usuario, que es el validateUsername(username) al que se le pasa el valor del guard. Si no se cumplen esas condiciones es cuando metemos el else, que puede ser cambiar un estado o mostrar un mensaje o lo que queramos. En este caso vamos a cambiar el estado a "error" e informar el reason. Lo mismo con el password
-            return onStateChanged.update(newValue: .error(reason: "Invalid username"))
-        }
-        guard let password, validatePassword(password) else {
-            return onStateChanged.update(newValue: .error(reason: "Invalid password"))
-        }
+        // Esto vamos a hacerlo en otras funciones mas abajo (que nos hemos terminao llevando a LoginUseCase junto con los estados
         
-        //Despues de que se ha validado el usuario y la contraseña se ejecuta el siguiente código:
+        //Despues de que se ha validado el usuario y la contraseña se ejecuta el siguiente código para hacer el Login:
         onStateChanged.update(newValue: .loading) //el estado pasa a cargando y
-        DispatchQueue.global().asyncAfter(deadline: .now() + 3) { [weak self] in //tras 3 segundos desde now(),
-            self?.onStateChanged.update(newValue: .success) //el estado cambia a success
+        let credentials = Credentials(username: username ?? "", paswword: password ?? "") //Se introducen las credenciales. El operador ?? indica que si el valor que se le introduce a username o password es nil, automaticamente se les asignará como valor una cadena vacía
+        useCase.execute(credentials: credentials) { [weak self] result in //Se ejecuta el metodo del useCase con las credenciales para que las valide y después se realizan los consecutivos cambios de estado
+            do {
+                try result.get()  //esta es una funcionalidad de result para captar errores. Funciona como un try except
+                self?.onStateChanged.update(newValue: .success)
+            } catch let error as LoginUsecaseError {
+                self?.onStateChanged.update(newValue: .error(reason: error.reason))
+            } catch {
+                self?.onStateChanged.update(newValue: .error(reason: "Somethin has happened"))
+            }
+            
         }
-    }
-    
-    private func validateUsername(_ username: String) -> Bool {
-        username.contains("@") && !username.isEmpty //Username tiene que contener @ (para que sea un correo) y no estar vacio
-    }
-    
-    private func validatePassword(_ password: String) -> Bool {
-        password.count >= 4  //password .count (que es lo mismo que .lenght) tiene que ser mayor o igual que 4
     }
 }

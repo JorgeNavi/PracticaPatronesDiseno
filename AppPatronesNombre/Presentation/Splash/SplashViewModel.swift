@@ -21,7 +21,7 @@ final class SplashViewModel {
         //onStateChanged?(.loading) //"La variale tiene ahora mismo el valor de loading del enum
         //Comentamos también esta variable onStateChanged?(.loading) que habiamos utilizado antes del binding y la refactorizamos usando el binding:
         onStateChanged.update(newValue: .loading) //detal manera que ya no me tengo que preocupar del hilo en el que estoy, asi que vamos a comentar más abajo el dispactchqueue al main
-        //DispatchQueue.global() etc quiere decir que en una cola global(segundo plano) tras 3 sec (desde .now() +5) ejecuta la siguiente función (Closure) que empieza en la llave {
+        //DispatchQueue.global() etc quiere decir que en una cola global(segundo plano) tras 3 sec (desde .now() +3) ejecuta la siguiente función (Closure) que empieza en la llave {
         DispatchQueue.global().asyncAfter(deadline: .now() + 3) { [weak self] in //La función dice que "sobre mi referencia (por eso ponemos weak, para que no ocupe memoria), ejecuta onStateChanged(.ready)
             //El problema de lo que estamos haciendo arriba es que estamos lanzando un cambio de estado desde un hilo secundario y los cambios de estado deben estar en el hilo principal. Por tanto hay que mover esta ejecución al hilo principal de la siguiente manera:
             // DispatchQueue.main.async { //De esta forma la ejecución de self?.onStateChanged?(.ready) y cada vez que se llame a onStateChanged se hace en el hilo principal
