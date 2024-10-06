@@ -48,6 +48,7 @@ final class LoginViewController: UIViewController {
             switch state {
                 case .success:
                     self?.renderSuccess()
+                self?.present(HeroesListBuilder().build(), animated: true) //Aqui presentamos la lista de heroes una vez que el login ha hecho success
                 case .error(let reason):   //Le pasamos aquí el motivo del error, se escribe así porque le pasamos una constante como parámetro como exije el enum y le damos el mismo nombre que el que proporcionamos como parametro a la func renderError() en la siguiente linea
                     self?.renderError(reason)
                 case .loading:

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeroesListViewController" customModule="AppPatronesNombre" customModuleProvider="target">
+            <connections>
+                <outlet property="errorContainer" destination="HfI-2N-cct" id="X7w-Qh-QGc"/>
+                <outlet property="errorLabel" destination="uwH-ZS-ufd" id="3Af-UN-ed6"/>
+                <outlet property="retryBotton" destination="yFq-re-Oa7" id="doG-t5-Qre"/>
+                <outlet property="spinner" destination="A2C-7p-GDf" id="9Ou-lL-aqf"/>
+                <outlet property="tableView" destination="MDz-Fr-oaD" id="x6h-aR-oGF"/>
+                <outlet property="view" destination="iN0-l3-epB" id="b8L-d3-nBU"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MDz-Fr-oaD">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="A2C-7p-GDf">
+                    <rect key="frame" x="186.66666666666666" y="428.66666666666669" width="20" height="20"/>
+                </activityIndicatorView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HfI-2N-cct">
+                    <rect key="frame" x="24" y="421.33333333333331" width="345" height="54.666666666666686"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFq-re-Oa7">
+                            <rect key="frame" x="0.0" y="0.0" width="345" height="34.333333333333336"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            <connections>
+                                <action selector="onRetryTapped:" destination="-1" eventType="touchUpInside" id="gTY-yr-9UM"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwH-ZS-ufd">
+                            <rect key="frame" x="0.0" y="34.333333333333371" width="345" height="20.333333333333329"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MDz-Fr-oaD" secondAttribute="trailing" id="0zo-gH-Vkn"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="MDz-Fr-oaD" secondAttribute="bottom" id="3qI-G0-hgL"/>
+                <constraint firstItem="HfI-2N-cct" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="FIi-gs-igc"/>
+                <constraint firstItem="yFq-re-Oa7" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="Hn6-3P-KZ4"/>
+                <constraint firstItem="A2C-7p-GDf" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="MLY-Ue-V08"/>
+                <constraint firstItem="MDz-Fr-oaD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Yr5-8g-74r"/>
+                <constraint firstItem="yFq-re-Oa7" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="ZDC-Cf-7Nk"/>
+                <constraint firstItem="MDz-Fr-oaD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ZKl-M6-lON"/>
+                <constraint firstItem="HfI-2N-cct" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="cAY-Dz-0pE"/>
+                <constraint firstItem="A2C-7p-GDf" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="pR7-SW-0Qp"/>
+                <constraint firstItem="HfI-2N-cct" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="pV3-Dk-Rrj"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="-11"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
